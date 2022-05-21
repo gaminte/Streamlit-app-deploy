@@ -1,12 +1,12 @@
 import streamlit as st
 import pandas as pd
-# from transformers import pipeline
-# import os
-# os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
-import pickle
+from transformers import pipeline
+import os
+os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
+# import pickle
 
-model = pickle.load(open('sentiment_analysis.sav', 'rb'))
-# sentiment_analysis = pipeline('sentiment-analysis', model = 'siebert/sentiment-roberta-large-english')
+# model = pickle.load(open('sentiment_analysis.sav', 'rb'))
+sentiment_analysis = pipeline('sentiment-analysis', model = 'siebert/sentiment-roberta-large-english')
 
 def reviews(input_data):
     df = pd.read_csv(input_data)
@@ -15,7 +15,7 @@ def reviews(input_data):
     X = df.Text
     sentiment = []
     for i in range(len(X)):
-        if model(X[i])[0]['label'] == 'POSITIVE':
+        if sentiment_analysis(X[i])[0]['label'] == 'POSITIVE':
             sentiment.append(1)
         else:
             sentiment.append(0)
