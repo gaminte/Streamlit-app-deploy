@@ -1,8 +1,8 @@
 import streamlit as st
 import pandas as pd
-from transformers import pipeline
-import os
-os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
+# from transformers import pipeline
+# import os
+# os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
 import pickle
 
 model = pickle.load(open('sentiment_analysis.sav', 'rb'))
