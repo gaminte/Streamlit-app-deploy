@@ -33,7 +33,10 @@ def main():
     if st.button('Filter Reviews'):
         if input_data is not None:
             Filtered_Reviews = reviews(input_data)
-            st.success(st.text(Filtered_Reviews))
+            st.success(st.write(Filtered_Reviews))
+        else:
+            st.markdown('### Upload a CSV file')
+
     
     
 
