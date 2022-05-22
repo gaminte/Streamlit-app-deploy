@@ -1,12 +1,13 @@
 import streamlit as st
 import pandas as pd
-from transformers import pipeline
+from transformers import AutoTokenizer, AutoModelForSequenceClassification, pipeline
 import os
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
-# import pickle
 
-# model = pickle.load(open('sentiment_analysis.sav', 'rb'))
-sentiment_analysis = pipeline('sentiment-analysis', model = 'siebert/sentiment-roberta-large-english')
+
+tokenizer = AutoTokenizer.from_pretrained("distilbert-base-uncased-finetuned-sst-2-english")
+model = AutoModelForSequenceClassification.from_pretrained("distilbert-base-uncased-finetuned-sst-2-english")
+sentiment_analysis = pipeline('sentiment-analysis', model = model, tokenizer = tokenizer)
 
 def reviews(input_data):
     df = pd.read_csv(input_data)
