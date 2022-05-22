@@ -27,7 +27,7 @@ def reviews(input_data):
 
 
 def main():
-    st.title("Contridict Review Filter")
+    st.title("Contradicting Review Filter")
     input_data = st.file_uploader(label='Upload a CSV File', type=['csv'])
     
     if st.button('Filter Reviews'):
