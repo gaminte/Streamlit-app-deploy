@@ -5,8 +5,8 @@ import os
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
 
 
-tokenizer = AutoTokenizer.from_pretrained("distilbert-base-uncased-finetuned-sst-2-english")
-model = TFAutoModelForSequenceClassification.from_pretrained("distilbert-base-uncased-finetuned-sst-2-english")
+tokenizer = AutoTokenizer.from_pretrained("cardiffnlp/twitter-roberta-base-sentiment")
+model = TFAutoModelForSequenceClassification.from_pretrained("cardiffnlp/twitter-roberta-base-sentiment")
 sentiment_analysis = pipeline('sentiment-analysis', model = model, tokenizer = tokenizer)
 
 def reviews(input_data):
@@ -16,7 +16,7 @@ def reviews(input_data):
     X = df.Text
     sentiment = []
     for i in range(len(X)):
-        if sentiment_analysis(X[i])[0]['label'] == 'POSITIVE':
+        if sentiment_analysis(X[i])[0]['label'] == 'LABEL_2':
             sentiment.append(1)
         else:
             sentiment.append(0)
