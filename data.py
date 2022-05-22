@@ -1,6 +1,6 @@
 import streamlit as st
 import pandas as pd
-from transformers import AutoTokenizer, AutoModelForSequenceClassification, pipeline
+from transformers import AutoTokenizer, TFAutoModelForSequenceClassification, pipeline
 import os
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
 
